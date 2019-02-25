@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <script type="text/javascript" src="assets/js/in.js">
+	    api_key:   "78tlwu2do4qrq8"
+	    // onLoad:    [ONLOAD]
+	    authorize: true
+	    lang:      "en_US"
+	</script>  
+
+	<script>
+    var liLogin = function() { // Setup an event listener to make an API call once auth is complete
+        IN.UI.Authorize().params({"scope":["r_basicprofile", "r_emailaddress"]}).place();
+        IN.Event.on(IN, 'auth', getProfileData);
+    }
+
+    var getProfileData = function() { // Use the API call wrapper to request the member's basic profile data
+        IN.API.Profile("me").fields("id,firstName,lastName,email-address,picture-urls::(original),public-profile-url,location:(name)").result(function (me) {
+            var profile = me.values[0];
+            var id = profile.id;
+            var firstName = profile.firstName;
+            var lastName = profile.lastName;
+            var emailAddress = profile.emailAddress;
+            var pictureUrl = profile.pictureUrls.values[0];
+            var profileUrl = profile.publicProfileUrl;
+            var country = profile.location.name;
+        });
+    }
+</script>
+  </head>
+  <body class="size-1140">
+  </body>
+</html>
