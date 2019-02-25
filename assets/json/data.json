@@ -1,0 +1,25 @@
+{
+	"skills": [
+		{"skill": "Machine Learning" , "level": 1, "num_projects": 2},
+		{"skill": "Python (Programming Language)" , "level": 1, "num_projects": 2},
+		{"skill": "R" , "level": 1, "num_projects": 2},
+		{"skill": "Data Science" , "level": 5, "num_projects": 2},
+		{"skill": "Data Analysis" , "level": 1, "num_projects": 2},
+		{"skill": "Statistics" , "level": 1, "num_projects": 2},
+		{"skill": "SQL" , "level": 1, "num_projects": 2},
+		{"skill": "Data Mining" , "level": 1, "num_projects": 2},
+		{"skill": "Apache Spark" , "level": 3, "num_projects": 2},
+		{"skill": "Deep Learning" , "level": 5, "num_projects": 2},
+		{"skill": "Tableau" , "level": 1, "num_projects": 2},
+		{"skill": "Statistical Modeling" , "level": 3, "num_projects": 2},
+		{"skill": "Big Data" , "level": 1, "num_projects": 2},
+		{"skill": "C++" , "level": 1, "num_projects": 2},
+		{"skill": "Java" , "level": 1, "num_projects": 2},
+		{"skill": "Data Visualization" , "level": 1, "num_projects": 2},
+		{"skill": "Algorithms" , "level": 3, "num_projects": 2},
+		{"skill": "Natural Language Processing (NLP)" , "level": 1, "num_projects": 2},
+		{"skill": "Programming" , "level": 1, "num_projects": 2},
+		{"skill": "Predictive Modeling" , "level": 1, "num_projects": 2},
+		{"skill": "Artificial Intelligence (AI)" , "level": 3, "num_projects": 2}
+	]
+}

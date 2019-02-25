@@ -1,38 +1,76 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" ng-app="app">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
 
-    <script type="text/javascript" src="assets/js/in.js">
-	    api_key:   "78tlwu2do4qrq8"
-	    // onLoad:    [ONLOAD]
-	    authorize: true
-	    lang:      "en_US"
-	</script>  
+    <!-- Include the Angular JS library -->
+    <script type="text/javascript" src="assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular-route.js"></script>
 
-	<script>
-    var liLogin = function() { // Setup an event listener to make an API call once auth is complete
-        IN.UI.Authorize().params({"scope":["r_basicprofile", "r_emailaddress"]}).place();
-        IN.Event.on(IN, 'auth', getProfileData);
-    }
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/icons.css">
+    <link rel="stylesheet" href="assets/css/responsee.css">
+    <link rel="stylesheet" href="assets/css/style.css"> -->
 
-    var getProfileData = function() { // Use the API call wrapper to request the member's basic profile data
-        IN.API.Profile("me").fields("id,firstName,lastName,email-address,picture-urls::(original),public-profile-url,location:(name)").result(function (me) {
-            var profile = me.values[0];
-            var id = profile.id;
-            var firstName = profile.firstName;
-            var lastName = profile.lastName;
-            var emailAddress = profile.emailAddress;
-            var pictureUrl = profile.pictureUrls.values[0];
-            var profileUrl = profile.publicProfileUrl;
-            var country = profile.location.name;
-        });
-    }
-</script>
+    <!-- Angular -->
+
+    <!-- Angular Module -->
+    <script type="text/javascript" src="angular/model/app.js"></script>
+
+    <!-- Angular Service -->
+    <script type="text/javascript" src="angular/service/PortfolioService.js"></script>
+
+    <!-- Angular Controller -->
+    <script type="text/javascript" src="angular/controller/PortfolioController.js"></script>
+
+    <!-- CUSTOM STYLE -->      
+    <!-- <link rel="stylesheet" href="assets/css/template-style.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,400,600,900&subset=latin-ext" rel="stylesheet"> 
+    <script type="text/javascript" src="assets/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
+
+    <style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.legend rect {
+  fill:white;
+  stroke:black;
+  opacity:0.8;}
+
+</style>
   </head>
+
   <body class="size-1140">
-  	<p>test</p>
+  	<script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="assets/charts/bubble.js"></script>
+
+    <!-- MAIN -->
+    <!-- <main role="main" data-ng-controller="PortfolioController as PortfolioCtrl">
+      <article ng-view></article>
+    </main> -->
+    <div class="main"></div>
   </body>
 </html>
