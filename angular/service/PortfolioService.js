@@ -11,7 +11,7 @@
             var self = this;
             var deferred = $q.defer();
 
-            $http.get('assets/json/data.json').then(function(data){
+            $http.get('assets/json/skills.json').then(function(data){
                 deferred.resolve(data.data);            
             });
 
