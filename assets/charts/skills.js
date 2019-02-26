@@ -1,25 +1,27 @@
+// leve 1-5
+// months worked
 data = [
-    {"skill": "Machine Learning" , "level": 1, "num_projects": 2},
-    {"skill": "Python (Programming Language)" , "level": 1, "num_projects": 2},
-    {"skill": "R" , "level": 1, "num_projects": 2},
-    {"skill": "Data Science" , "level": 5, "num_projects": 2},
-    {"skill": "Data Analysis" , "level": 1, "num_projects": 2},
-    {"skill": "Statistics" , "level": 1, "num_projects": 2},
-    {"skill": "SQL" , "level": 1, "num_projects": 2},
-    {"skill": "Data Mining" , "level": 1, "num_projects": 2},
-    {"skill": "Apache Spark" , "level": 3, "num_projects": 2},
-    {"skill": "Deep Learning" , "level": 5, "num_projects": 2},
-    {"skill": "Tableau" , "level": 1, "num_projects": 2},
-    {"skill": "Statistical Modeling" , "level": 3, "num_projects": 2},
-    {"skill": "Big Data" , "level": 1, "num_projects": 2},
-    {"skill": "C++" , "level": 1, "num_projects": 2},
-    {"skill": "Java" , "level": 1, "num_projects": 2},
-    {"skill": "Data Visualization" , "level": 1, "num_projects": 2},
-    {"skill": "Algorithms" , "level": 3, "num_projects": 2},
-    {"skill": "Natural Language Processing (NLP)" , "level": 1, "num_projects": 2},
-    {"skill": "Programming" , "level": 1, "num_projects": 2},
-    {"skill": "Predictive Modeling" , "level": 1, "num_projects": 2},
-    {"skill": "Artificial Intelligence (AI)" , "level": 3, "num_projects": 2}
+    {"skill": "Machine Learning" , "level": 3, "months": 24},
+    {"skill": "Python (Programming Language)" , "level": 1, "months": 6},
+    {"skill": "R" , "level": 4, "months": 36},
+    {"skill": "Data Science" , "level": 4, "months": 30},
+    {"skill": "Data Analysis" , "level": 5, "months": 36},
+    {"skill": "Statistics" , "level": 4, "months": 48},
+    {"skill": "SQL" , "level": 5, "months": 36},
+    {"skill": "Data Mining" , "level": 4, "months": 32},
+    {"skill": "Apache Spark" , "level": 3, "months": 24},
+    {"skill": "Deep Learning" , "level": 2, "months": 12},
+    {"skill": "Tableau" , "level": 5, "months": 24},
+    {"skill": "Statistical Modeling" , "level": 4, "months": 30},
+    {"skill": "Big Data" , "level": 4, "months": 26},
+    {"skill": "C++" , "level": 3, "months": 12},
+    {"skill": "Java" , "level": 4, "months": 24},
+    {"skill": "Data Visualization" , "level": 5, "months": 36},
+    {"skill": "Algorithms" , "level": 5, "months": 48},
+    {"skill": "Natural Language Processing (NLP)" , "level": 1, "months": 2},
+    {"skill": "Programming" , "level": 5, "months": 48},
+    {"skill": "Predictive Modeling" , "level": 4, "months": 30},
+    {"skill": "Artificial Intelligence (AI)" , "level": 4, "months": 40}
   ]
 
 var width = 960,
@@ -54,10 +56,12 @@ nodes = []
 for (i = 0; i < data.length; i++) {
   j = {}
   
-  a = data[i]['level'] * 10;
-  r = data[i]['num_projects'] * 10;
+  a = data[i]['level'];
+  r = data[i]['months'];
 
   j['skill'] = data[i]['skill'];
+  j['level'] = data[i]['level'];
+  j['months'] = data[i]['months'];
   j['cluster'] = a;
   j['radius'] = r;
   j['x'] = Math.cos(i / m * 2 * Math.PI) * 200 + width / 2 + Math.random();
@@ -76,7 +80,8 @@ var force = d3.layout.force()
     .on("tick", tick)
     .start();
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#skills")
+    .append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -84,7 +89,9 @@ var node = svg.selectAll("circle")
     .data(nodes)
   .enter().append("circle")
     .style("fill", function(d) { return color(d.cluster); })
-    .attr("data-legend",function(d) { return d.skill})
+    .attr("skill", function(d) { return d.skill})
+    .attr("level", function(d) { return d.level})
+    .attr("months", function(d) { return d.months})
     .call(force.drag);
 
 node.transition()
