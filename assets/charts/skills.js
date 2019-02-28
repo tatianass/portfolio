@@ -23,9 +23,11 @@ data = [
     {"skill": "Predictive Modeling" , "level": 4, "months": 30},
     {"skill": "Artificial Intelligence (AI)" , "level": 4, "months": 40}
   ]
-
-var width = 960,
-    height = 500,
+var axisMargin = 20,
+    margin = 40,
+    NumberOfTimesMargin = 4,
+    width = parseInt(d3.select("#skills").style('width'), 10),
+    height = parseInt(d3.select("#skills").style('height'), 10),
     padding = 1.5, // separation between same-color nodes
     clusterPadding = 6, // separation between different-color nodes
     maxRadius = 12;
